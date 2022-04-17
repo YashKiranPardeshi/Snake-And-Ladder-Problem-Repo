@@ -28,13 +28,29 @@ public class SnakeAndLadderSimulator {
                 case LADDER:
                     System.out.println("HURRAY !!! YOU get LADDER");
                     position = position + dieNo;
+                    if (position > 100) {
+                        System.out.println("player position is out of Board.");
+                        position = position - dieNo;
+                    }
                     break;
-                case SNAKE:
-                    System.out.println("OOP !!! YOU Get Snake");
-                    position = position - dieNo;
-                    break;
+                    case SNAKE:
+                        position = position + dieNo;
+                            if (position <= 100) {
+                            System.out.println("OOP !!! YOU Get Snake");
+                            position = position - dieNo - dieNo;
+                            if (position < 0) {
+                                position = 0;
+                                break;
+                            }
+                        }else {
+                                System.out.println("player position is out of Board.");
+                                position = position - dieNo;
+                            }
+                            break;
+
+
             }
-            System.out.println("Position:"+position);
+            showPosition();
         }
     }
     public static void main (String[] args){
@@ -45,7 +61,7 @@ public class SnakeAndLadderSimulator {
          //Rolling The Die
         player1.rollDie();
         //Rolling The Die
-        player1.showPosition();
+
     }
 }
 
